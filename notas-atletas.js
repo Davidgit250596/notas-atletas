@@ -1,4 +1,3 @@
-// Entrada de dados
 let atletas = [
   {
     nome: "Cesar Abascal",
@@ -18,28 +17,33 @@ let atletas = [
   }
 ];
 
-
 function calcularMediaAtletas(objAtletas) {
+
   for (let i = 0; i < objAtletas.length; i++) {
+
     let atleta = objAtletas[i];
 
-    let notasOrdenadas = atleta.notas.sort((a, b) => a - b);
-
-    let notasValidas = notasOrdenadas.slice(1, 4);
+    
+    let notas = atleta.notas.sort((a, b) => a - b);
 
     let soma = 0;
-    notasValidas.forEach(nota => {
-      soma += nota;
-    });
+    let contador = 0;
 
-    let media = soma / notasValidas.length;
+    for (let j = 0; j < notas.length; j++) {
 
+      
+      if (j !== 0 && j !== notas.length - 1) {
+        soma += notas[j];
+        contador++;
+      }
+    }
+
+    let media = soma / contador;
 
     console.log(`Atleta: ${atleta.nome}`);
-    console.log(`Notas Obtidas: ${notasOrdenadas.join(",")}`);
+    console.log(`Notas Obtidas: ${notas.join(",")}`);
     console.log(`Média Válida: ${media}\n`);
   }
 }
-
 
 calcularMediaAtletas(atletas);
